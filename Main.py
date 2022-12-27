@@ -9,7 +9,7 @@ process = sp.check_output(['strace', "./"+fp], stderr=sp.STDOUT, timeout=10) # r
 
 def get_syscalls(proc):
     syscalls = proc.decode("utf-8").split("\n") # get all syscalls from strace
-    return syscalls[:len(syscalls)] # remove final exit message
+    return syscalls[:len(syscalls)-1] # remove final exit message
 
 def print_header_syscalls(syscalls):
     for i in range(min(16, len(syscalls))): # iterating over 16 first syscalls(or less if not enough)

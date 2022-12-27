@@ -6,7 +6,7 @@ parser.add_argument("filepath", metavar="F", type=str, nargs="+", help="The file
 fp = parser.parse_args().filepath[0]
 
 def get_syscalls():
-    syscalls = sp.Popen(['strace', "./"+fp]).stdout.read().decode("utf-8").split('\n')
+    syscalls = sp.Popen(['strace', "./"+fp], stdout=sp.PIPE).stdout.read().decode("utf-8").split('\n')
     print(syscalls)
 
 get_syscalls()

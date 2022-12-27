@@ -8,7 +8,7 @@ fp = parser.parse_args().filepath[0]
 process = sp.check_output(['strace', "./"+fp])
 
 def get_syscalls(proc):
-    syscalls = proc.stderr.read().decode("utf-8").split("\n")
+    syscalls = proc.decode("utf-8").split("\n")
     return syscalls
 
 print(get_syscalls(process))
